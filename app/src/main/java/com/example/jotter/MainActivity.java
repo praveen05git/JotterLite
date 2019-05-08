@@ -1,6 +1,7 @@
 package com.example.jotter;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -260,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                System.exit(0);
+                ExitActivity(null);
 
             }
         });
@@ -306,6 +307,14 @@ public class MainActivity extends AppCompatActivity {
         i.putExtra("val",nit);
         startActivity(i);
         finish();
+    }
+
+    public void ExitActivity(View view)
+    {
+        Intent ExitIntent=new Intent(Intent.ACTION_MAIN);
+        ExitIntent.addCategory(Intent.CATEGORY_HOME);
+        ExitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(ExitIntent);
     }
 
 }
