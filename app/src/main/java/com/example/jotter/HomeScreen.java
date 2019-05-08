@@ -2,15 +2,18 @@ package com.example.jotter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -33,10 +36,18 @@ public class HomeScreen extends AppCompatActivity {
 
         setTitle("My Jots");
 
-        //       if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
-        if (nitSettings.loadNitState() == true) {
-            setTheme(R.style.DarkTheme);
-        } else {
+        Intent intent=getIntent();
+        String pass=intent.getStringExtra("nitVal");
+
+        if(pass.equals("One"))
+ //           if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
+//        if (nitSettings.loadNitState() == true)
+            {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                setTheme(R.style.DarkTheme);
+            }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             setTheme(R.style.AppTheme);
         }
 
@@ -52,7 +63,22 @@ public class HomeScreen extends AppCompatActivity {
             }
 
             ArrayAdapter<String> fileAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ar);
+            /*
+            {
+
+            @Override
+            public View getView ( int position, View convertView, ViewGroup parent)
+            {
+                View view = super.getView(position, convertView, parent);
+                TextView tv = view.findViewById(R.id.listcontent);
+                tv.setTextColor(Color.RED);
+                return view;
+            }
+        };
+
+*/
             lView.setAdapter(fileAdapter);
+
             lView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

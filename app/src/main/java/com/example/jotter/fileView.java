@@ -30,6 +30,7 @@ public class fileView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         nitSettings=new NitSettings(this);
         setTitle("Edit Jot");
+
 //        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
 
         if(nitSettings.loadNitState()==true)
@@ -138,6 +139,12 @@ public class fileView extends AppCompatActivity {
     public void HomeActivity(View view) {
 
         Intent HomeIntent=new Intent(this,HomeScreen.class);
+        if(nitSettings.loadNitState()==true)
+        {
+            HomeIntent.putExtra("nitVal","One");
+        }
+        else
+            HomeIntent.putExtra("nitVal","Zero");
         startActivity(HomeIntent);
         overridePendingTransition(android.R.anim.slide_in_left,0);
     }

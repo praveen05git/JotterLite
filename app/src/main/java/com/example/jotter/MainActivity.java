@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(nitSettings.loadNitState()==true)
         {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             setTheme(R.style.DarkTheme);
         }
         else
@@ -221,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                     if(nit==0) {
                         nit = 1;
-//                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                         nitSettings.setNitState(true);
                         restartApp();
                      }
@@ -258,7 +259,9 @@ public class MainActivity extends AppCompatActivity {
         alt_dia.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                MainActivity.super.onBackPressed();
+
+                System.exit(0);
+
             }
         });
 
@@ -282,9 +285,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void HomeActivity(View view) {
 
-        Intent HomeIntent=new Intent(this,HomeScreen.class);
-        startActivity(HomeIntent);
-        overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
+        if(nit==1)
+        {
+            Intent HomeIntent=new Intent(this,HomeScreen.class);
+            HomeIntent.putExtra("nitVal","One");
+            startActivity(HomeIntent);
+            overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
+        }
+        else {
+            Intent HomeIntent = new Intent(this, HomeScreen.class);
+            HomeIntent.putExtra("nitVal","Zero");
+            startActivity(HomeIntent);
+            overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
+        }
     }
 
         public void restartApp()
