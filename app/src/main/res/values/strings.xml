@@ -2,4 +2,10 @@
     <string name="app_name">JOTTER</string>
     <string name="title_activity_main2">editActivity</string>
     <string name="title_activity_view_all">viewAll</string>
+
+    <string name="rate_dialog_title">Rate</string>
+    <string name="rate_dialog_message">Rate</string>
+    <string name="rate_dialog_ok">Rate</string>
+    <string name="rate_dialog_cancel">Rate</string>
+    <string name="rate_dialog_no">Rate</string>
 </resources>

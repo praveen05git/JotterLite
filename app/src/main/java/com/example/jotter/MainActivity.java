@@ -23,6 +23,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
+import hotchemi.android.rate.AppRate;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText name,cont;
@@ -52,6 +54,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+        AppRate.with(this)
+                .setInstallDays(0)
+                .setLaunchTimes(2)
+                .monitor();
+        AppRate.showRateDialogIfMeetsConditions(this);
 
 //        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
         if(nitSettings.loadNitState()==true)
