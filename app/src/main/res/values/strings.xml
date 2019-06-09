@@ -3,9 +3,9 @@
     <string name="title_activity_main2">editActivity</string>
     <string name="title_activity_view_all">viewAll</string>
 
-    <string name="rate_dialog_title">Rate</string>
-    <string name="rate_dialog_message">Rate</string>
-    <string name="rate_dialog_ok">Rate</string>
-    <string name="rate_dialog_cancel">Rate</string>
-    <string name="rate_dialog_no">Rate</string>
+    <string name="rate_dialog_title">Rate Jotter</string>
+    <string name="rate_dialog_message">Loving Jotter? Take a moment to rate us!</string>
+    <string name="rate_dialog_ok">Rate Now</string>
+    <string name="rate_dialog_cancel">Remind me Later</string>
+    <string name="rate_dialog_no">No Thanks</string>
 </resources>
