@@ -307,7 +307,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-        public void restartApp()
+    public void restartApp()
     {
         Intent i =new Intent(getApplicationContext(),MainActivity.class);
         i.putExtra("val",nit);

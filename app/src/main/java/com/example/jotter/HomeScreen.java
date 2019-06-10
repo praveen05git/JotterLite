@@ -1,7 +1,9 @@
 package com.example.jotter;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -68,6 +71,38 @@ public class HomeScreen extends AppCompatActivity {
                 }
             });
 
+            lView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+                    AlertDialog alt=new AlertDialog.Builder(HomeScreen.this).create();
+                    alt.setTitle("Warning!");
+                    fileName=ar.get(position);
+                    alt.setMessage("Do you want to delete, "+fileName+"?");
+
+                    alt.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            File f=new File(Environment.getExternalStorageDirectory()+"/MyJots"+"/"+fileName);
+                            f.delete();
+                            finish();
+                            startActivity(getIntent());
+                            Toast.makeText(getApplicationContext(),"File Deleted",Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+
+                    alt.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    alt.show();
+                    return true;
+                }
+            });
+
         } catch (Exception e) {
 
         }
@@ -93,5 +128,6 @@ public class HomeScreen extends AppCompatActivity {
         startActivity(MainIntent);
         overridePendingTransition(android.R.anim.slide_in_left,0);
     }
+
 
 }
