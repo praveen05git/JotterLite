@@ -7,6 +7,9 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,6 +23,7 @@ public class fileView extends AppCompatActivity {
 
     EditText fileHead,fileBody;
     FloatingActionButton fab_edit;
+    String fileName;
     int stat=0;
 
     NitSettings nitSettings;
@@ -53,6 +57,7 @@ public class fileView extends AppCompatActivity {
 
         Intent intent=getIntent();
         String pass=intent.getStringExtra("message");
+        fileName=pass;
         fileHead.setText(pass);
 
         File f = new File(Environment.getExternalStorageDirectory()+"/"+"MyJots",pass);
@@ -134,6 +139,54 @@ public class fileView extends AppCompatActivity {
 
 
     }
+
+   @Override
+   public boolean onCreateOptionsMenu(Menu menu)
+   {
+       MenuInflater inflater=getMenuInflater();
+       inflater.inflate(R.menu.delete_menu,menu);
+       return true;
+   }
+
+   @Override
+   public boolean onOptionsItemSelected(MenuItem item)
+   {
+       int del_menu_id=item.getItemId();
+
+       switch (del_menu_id)
+       {
+           case R.id.opt_del:
+               AlertDialog alt=new AlertDialog.Builder(fileView.this).create();
+               alt.setTitle("Warning!");
+               alt.setMessage("Do you want to delete, "+fileName+"?");
+
+               alt.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       File f=new File(Environment.getExternalStorageDirectory()+"/MyJots"+"/"+fileName);
+                       f.delete();
+                       finish();
+                       HomeActivity(null);
+                       Toast.makeText(getApplicationContext(),"File Deleted",Toast.LENGTH_SHORT).show();
+
+                   }
+               });
+
+               alt.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       dialog.cancel();
+                   }
+               });
+
+               alt.show();
+               return true;
+
+           default:
+               return super.onOptionsItemSelected(item);
+       }
+   }
+
 
     public void HomeActivity(View view) {
 
