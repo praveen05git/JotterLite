@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
+//APP RATE
         AppRate.with(this)
                 .setInstallDays(0)
                 .setLaunchTimes(2)

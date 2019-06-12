@@ -14,6 +14,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+/*import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;*/
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -22,7 +27,7 @@ public class HomeScreen extends AppCompatActivity {
     ListView lView;
     ArrayList<String> ar = new ArrayList<>();
     String fileName;
-
+   // private InterstitialAd mInterstitialAd;
     NitSettings nitSettings;
 
 
@@ -50,6 +55,19 @@ public class HomeScreen extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_home_screen);
+/*//ADs
+implementation 'com.google.android.gms:play-services-ads:17.2.1'
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Toast.makeText(getApplicationContext(),"The interstitial wasn't loaded yet.",Toast.LENGTH_SHORT).show();
+        }
+*/
+
         lView = findViewById(R.id.File_list);
 
         try {
