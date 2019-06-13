@@ -13,4 +13,10 @@
     <item
         android:id="@+id/opt_home"
         android:title="My Jots" />
+    <item
+        android:id="@+id/opt_rate"
+        android:title="Rate Me!" />
+    <item
+        android:id="@+id/opt_about"
+        android:title="About" />
 </menu>

@@ -288,6 +288,12 @@ public class MainActivity extends AppCompatActivity {
                 alt_dia1.show();
                 return true;
 
+            case R.id.opt_rate:
+                AppRate.showRateDialogIfMeetsConditions(this);
+                return true;
+
+            case R.id.opt_about:
+
 
             default:
                 return super.onOptionsItemSelected(item);
