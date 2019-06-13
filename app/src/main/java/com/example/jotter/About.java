@@ -1,9 +1,7 @@
-package com.jotter.notes;
+package com.example.jotter;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
-import com.example.jotter.R;
+import android.support.v7.app.AppCompatActivity;
 
 public class About extends AppCompatActivity {
 

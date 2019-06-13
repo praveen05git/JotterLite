@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //APP RATE
         AppRate.with(this)
-
                 .setInstallDays(0)
                 .setLaunchTimes(2)
                 .monitor();
@@ -289,6 +288,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.opt_rate:
+                AppRate.with(this)
+                        .setInstallDays(0)
+                        .monitor();
                 AppRate.showRateDialogIfMeetsConditions(this);
                 return true;
 

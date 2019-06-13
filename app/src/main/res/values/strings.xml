@@ -8,4 +8,5 @@
     <string name="rate_dialog_ok">Rate Now</string>
     <string name="rate_dialog_cancel">Remind me Later</string>
     <string name="rate_dialog_no">No Thanks</string>
+    <string name="title_activity_newactivity">newactivity</string>
 </resources>
