@@ -20,6 +20,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
@@ -35,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
     int nit=0;
     ArrayList<String> arr=new ArrayList<>();
     NitSettings nitSettings;
+
+    InterstitialAd mInterstitialAd;
+    private InterstitialAd interstitial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +64,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //APP RATE
         AppRate.with(this)
+
                 .setInstallDays(0)
                 .setLaunchTimes(2)
                 .monitor();
         AppRate.showRateDialogIfMeetsConditions(this);
+
+
+//ADs
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        // Prepare the Interstitial Ad
+        interstitial = new InterstitialAd(MainActivity.this);
+        // Insert the Ad Unit ID
+        interstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        interstitial.loadAd(adRequest);
+        // Prepare an Interstitial Ad Listener
+        interstitial.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+        // Call displayInterstitial() function
+                displayInterstitial();
+            }
+        });
+
 
 //        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
         if(nitSettings.loadNitState()==true)
@@ -160,6 +188,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+
+    public void displayInterstitial() {
+    // If Ads are loaded, show Interstitial else show nothing.
+        if (interstitial.isLoaded()) {
+            interstitial.show();
+        }
     }
 
     @Override

@@ -15,9 +15,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-/*import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;*/
+import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class HomeScreen extends AppCompatActivity {
     ListView lView;
     ArrayList<String> ar = new ArrayList<>();
     String fileName;
-   // private InterstitialAd mInterstitialAd;
+    InterstitialAd mInterstitialAd;
+    private InterstitialAd interstitial;
     NitSettings nitSettings;
 
 
@@ -55,18 +57,24 @@ public class HomeScreen extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_home_screen);
-/*//ADs
-implementation 'com.google.android.gms:play-services-ads:17.2.1'
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
-        mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        } else {
-            Toast.makeText(getApplicationContext(),"The interstitial wasn't loaded yet.",Toast.LENGTH_SHORT).show();
-        }
-*/
+//ADs
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        // Prepare the Interstitial Ad
+        interstitial = new InterstitialAd(HomeScreen.this);
+        // Insert the Ad Unit ID
+        interstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        interstitial.loadAd(adRequest);
+        // Prepare an Interstitial Ad Listener
+        interstitial.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                // Call displayInterstitial() function
+                displayInterstitial();
+            }
+        });
+
 
         lView = findViewById(R.id.File_list);
 
@@ -125,6 +133,13 @@ implementation 'com.google.android.gms:play-services-ads:17.2.1'
 
         } catch (Exception e) {
 
+        }
+    }
+
+    public void displayInterstitial() {
+        // If Ads are loaded, show Interstitial else show nothing.
+        if (interstitial.isLoaded()) {
+            interstitial.show();
         }
     }
 
