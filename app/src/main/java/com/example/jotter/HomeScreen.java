@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -28,7 +27,6 @@ public class HomeScreen extends AppCompatActivity {
     ListView lView;
     ArrayList<String> ar = new ArrayList<>();
     String fileName;
-    InterstitialAd mInterstitialAd;
     private InterstitialAd interstitial;
     NitSettings nitSettings;
 

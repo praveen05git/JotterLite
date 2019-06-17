@@ -29,8 +29,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-import hotchemi.android.rate.AppRate;
-
 public class MainActivity extends AppCompatActivity {
 
     EditText name,cont;
@@ -41,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arr=new ArrayList<>();
     NitSettings nitSettings;
 
-    InterstitialAd mInterstitialAd;
     private InterstitialAd interstitial;
 
     @Override
@@ -63,13 +60,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_main);
-//APP RATE
-        AppRate.with(this)
-                .setInstallDays(0)
-                .setLaunchTimes(2)
-                .monitor();
-        AppRate.showRateDialogIfMeetsConditions(this);
-
 
 //ADs
 
@@ -294,6 +284,19 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.opt_about:
+                if(nit==1)
+                {
+                    Intent AboutIntent=new Intent(this,About.class);
+                    AboutIntent.putExtra("nitVal","One");
+                    startActivity(AboutIntent);
+                    overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
+                }
+                else {
+                    Intent HomeIntent = new Intent(this, HomeScreen.class);
+                    HomeIntent.putExtra("nitVal","Zero");
+                    startActivity(HomeIntent);
+                    overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
+                }
                 return true;
 
             default:
