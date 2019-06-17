@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
@@ -288,14 +289,12 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.opt_rate:
-                AppRate.with(this)
-                        .setInstallDays(0)
-                        .monitor();
-                AppRate.showRateDialogIfMeetsConditions(this);
+                Intent playStore = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.jotter.notes"));
+                startActivity(playStore);
                 return true;
 
             case R.id.opt_about:
-
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
