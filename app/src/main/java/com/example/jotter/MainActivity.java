@@ -286,13 +286,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.opt_about:
                 if(nit==1)
                 {
-                    Intent AboutIntent=new Intent(this,About.class);
+                    Intent AboutIntent=new Intent(this,newabout.class);
                     AboutIntent.putExtra("nitVal","One");
                     startActivity(AboutIntent);
                     overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
                 }
                 else {
-                    Intent HomeIntent = new Intent(this, HomeScreen.class);
+                    Intent HomeIntent = new Intent(this, newabout.class);
                     HomeIntent.putExtra("nitVal","Zero");
                     startActivity(HomeIntent);
                     overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);

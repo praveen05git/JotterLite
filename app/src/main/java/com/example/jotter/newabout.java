@@ -1,12 +1,12 @@
 package com.example.jotter;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.View;
 
-public class About extends AppCompatActivity {
+public class newabout extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class About extends AppCompatActivity {
             setTheme(R.style.AppTheme);
         }
 
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_newabout);
     }
 
     @Override
