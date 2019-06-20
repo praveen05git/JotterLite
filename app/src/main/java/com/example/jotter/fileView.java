@@ -13,6 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
@@ -27,6 +31,8 @@ public class fileView extends AppCompatActivity {
     int stat=0;
 
     NitSettings nitSettings;
+
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +50,13 @@ public class fileView extends AppCompatActivity {
         {
             setTheme(R.style.AppTheme);
         }
+
         setContentView(R.layout.activity_file_view);
 
-
+//ADs
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest1=new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest1);
 
         fileHead=findViewById(R.id.edit_head);
         fileHead.setEnabled(false);

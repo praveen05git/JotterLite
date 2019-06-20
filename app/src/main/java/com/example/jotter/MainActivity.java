@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.File;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arr=new ArrayList<>();
     NitSettings nitSettings;
 
+    private AdView mAdView;
     private InterstitialAd interstitial;
 
     @Override
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
 //ADs
 
-        AdRequest adRequest = new AdRequest.Builder().build();
+       /* AdRequest adRequest = new AdRequest.Builder().build();
 
         // Prepare the Interstitial Ad
         interstitial = new InterstitialAd(MainActivity.this);
@@ -78,7 +81,11 @@ public class MainActivity extends AppCompatActivity {
                 displayInterstitial();
             }
         });
+*/
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest1=new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest1);
 
 //        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
         if(nitSettings.loadNitState()==true)

@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.File;
@@ -28,6 +29,7 @@ public class HomeScreen extends AppCompatActivity {
     ArrayList<String> ar = new ArrayList<>();
     String fileName;
     private InterstitialAd interstitial;
+    private AdView mAdView;
     NitSettings nitSettings;
 
 
@@ -73,6 +75,9 @@ public class HomeScreen extends AppCompatActivity {
             }
         });
 
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest1=new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest1);
 
         lView = findViewById(R.id.File_list);
 
