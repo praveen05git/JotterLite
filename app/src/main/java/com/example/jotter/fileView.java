@@ -40,8 +40,6 @@ public class fileView extends AppCompatActivity {
         nitSettings=new NitSettings(this);
         setTitle("Edit Jot");
 
-//        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
-
         if(nitSettings.loadNitState()==true)
         {
             setTheme(R.style.DarkTheme);

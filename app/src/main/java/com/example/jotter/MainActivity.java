@@ -21,11 +21,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -38,11 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private String save_name;
     private static final String state_name="Empty";
     int nit=0;
-    ArrayList<String> arr=new ArrayList<>();
     NitSettings nitSettings;
 
     private AdView mAdView;
-    private InterstitialAd interstitial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,24 +59,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-//ADs
-
-       /* AdRequest adRequest = new AdRequest.Builder().build();
-
-        // Prepare the Interstitial Ad
-        interstitial = new InterstitialAd(MainActivity.this);
-        // Insert the Ad Unit ID
-        interstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-        interstitial.loadAd(adRequest);
-        // Prepare an Interstitial Ad Listener
-        interstitial.setAdListener(new AdListener() {
-            public void onAdLoaded() {
-        // Call displayInterstitial() function
-                displayInterstitial();
-            }
-        });
-*/
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest1=new AdRequest.Builder().build();
@@ -187,13 +164,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    public void displayInterstitial() {
-    // If Ads are loaded, show Interstitial else show nothing.
-        if (interstitial.isLoaded()) {
-            interstitial.show();
-        }
-    }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState)

@@ -11,13 +11,12 @@ public class newabout extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("About");
 
         Intent intent=getIntent();
         String pass=intent.getStringExtra("nitVal");
 
         if(pass.equals("One"))
-        //           if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
-//        if (nitSettings.loadNitState() == true)
         {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             setTheme(R.style.DarkTheme);
