@@ -276,6 +276,11 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return true;
 
+            case R.id.opt_privacy:
+                Intent privacyPolicy = new Intent(Intent.ACTION_VIEW, Uri.parse("https://praveen051997.wixsite.com/website/privacy-policy"));
+                startActivity(privacyPolicy);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
