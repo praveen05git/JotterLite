@@ -17,6 +17,12 @@
         android:id="@+id/opt_rate"
         android:title="Rate Me!" />
     <item
+        android:id="@+id/more_apps_opt"
+        android:title="More Apps" />
+    <item
+        android:id="@+id/menu_remove_Ads"
+        android:title="Remove Ads" />
+    <item
         android:id="@+id/opt_about"
         android:title="About" />
     <item

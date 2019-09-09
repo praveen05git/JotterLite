@@ -3,9 +3,9 @@ package com.example.jotter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,9 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,7 +29,6 @@ public class fileView extends AppCompatActivity {
 
     NitSettings nitSettings;
 
-    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,10 +47,6 @@ public class fileView extends AppCompatActivity {
 
         setContentView(R.layout.activity_file_view);
 
-//ADs
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest1=new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest1);
 
         fileHead=findViewById(R.id.edit_head);
         fileHead.setEnabled(false);
@@ -129,7 +121,6 @@ public class fileView extends AppCompatActivity {
         AlertDialog alt_dia=new AlertDialog.Builder(fileView.this).create();
         alt_dia.setTitle("Save your edits!");
         alt_dia.setMessage("Are you sure, you want to go back?");
-
         alt_dia.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

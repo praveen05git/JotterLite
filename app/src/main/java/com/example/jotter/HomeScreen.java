@@ -3,35 +3,31 @@ package com.example.jotter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Environment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
-import android.view.Menu;
-import android.view.MenuInflater;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
+import com.unity3d.ads.IUnityAdsListener;
+import com.unity3d.ads.UnityAds;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements IUnityAdsListener {
 
     ListView lView;
     ArrayList<String> ar = new ArrayList<>();
     String fileName;
-    private InterstitialAd interstitial;
-    private AdView mAdView;
     NitSettings nitSettings;
 
+    IUnityAdsListener new_listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +37,11 @@ public class HomeScreen extends AppCompatActivity {
 
         setTitle("My Jots");
 
+
         Intent intent=getIntent();
         String pass=intent.getStringExtra("nitVal");
 
         if(pass.equals("One"))
- //           if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES)
-//        if (nitSettings.loadNitState() == true)
             {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 setTheme(R.style.DarkTheme);
@@ -57,27 +52,9 @@ public class HomeScreen extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_home_screen);
-//ADs
 
-        AdRequest adRequest = new AdRequest.Builder().build();
+        UnityAds.initialize(HomeScreen.this,"3283238",new_listener);
 
-        // Prepare the Interstitial Ad
-        interstitial = new InterstitialAd(HomeScreen.this);
-        // Insert the Ad Unit ID
-        interstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-
-        interstitial.loadAd(adRequest);
-        // Prepare an Interstitial Ad Listener
-        interstitial.setAdListener(new AdListener() {
-            public void onAdLoaded() {
-                // Call displayInterstitial() function
-                displayInterstitial();
-            }
-        });
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest1=new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest1);
 
         lView = findViewById(R.id.File_list);
 
@@ -139,12 +116,6 @@ public class HomeScreen extends AppCompatActivity {
         }
     }
 
-    public void displayInterstitial() {
-        // If Ads are loaded, show Interstitial else show nothing.
-        if (interstitial.isLoaded()) {
-            interstitial.show();
-        }
-    }
 
     public void viewFiles(View view) {
         Intent FilesIntent = new Intent(this, fileView.class);
@@ -154,18 +125,53 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     @Override
+    public void onStart()
+    {
+        super.onStart();
+
+    }
+
+    @Override
     public void onBackPressed() {
 
-                MainScreen(null);
+               MainScreen(null);
+
 
     }
 
     public void MainScreen(View view) {
+
+        if(UnityAds.isReady("video"))
+        {
+            UnityAds.show(HomeScreen.this,"video");
+        }
+        else
+        {
+            UnityAds.initialize(HomeScreen.this,"3283238",new_listener);
+        }
 
         Intent MainIntent=new Intent(this,MainActivity.class);
         startActivity(MainIntent);
         overridePendingTransition(android.R.anim.slide_in_left,0);
     }
 
+    @Override
+    public void onUnityAdsReady(String s) {
 
+    }
+
+    @Override
+    public void onUnityAdsStart(String s) {
+
+    }
+
+    @Override
+    public void onUnityAdsFinish(String s, UnityAds.FinishState finishState) {
+
+    }
+
+    @Override
+    public void onUnityAdsError(UnityAds.UnityAdsError unityAdsError, String s) {
+
+    }
 }

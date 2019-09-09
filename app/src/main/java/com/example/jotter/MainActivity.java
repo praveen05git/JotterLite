@@ -1,34 +1,35 @@
 package com.example.jotter;
 
+import com.unity3d.ads.IUnityAdsListener;
+import com.unity3d.ads.UnityAds;
+
+
+
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-
 import java.io.File;
 import java.io.FileWriter;
-import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     EditText name,cont;
     FloatingActionButton btn_save;
@@ -37,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     int nit=0;
     NitSettings nitSettings;
 
-    private AdView mAdView;
+
+    final private UnityAdsListener unityAdsListener=new UnityAdsListener();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest1=new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest1);
+        UnityAds.initialize(MainActivity.this,"3283238",unityAdsListener);
 
 //        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
         if(nitSettings.loadNitState()==true)
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         save_name=name.getText().toString();
         cont = findViewById(R.id.edit_body);
         btn_save=findViewById(R.id.btn_save);
-
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,7 +258,48 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(playStore);
                 return true;
 
+            case R.id.more_apps_opt:
+                try {
+                    //replace &quot;Unified+Apps&quot; with your developer name https://play.google.com/store/apps/developer?id=Hence+Simplified&hl=en
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:Hence Simplified")));
+                }
+                catch (android.content.ActivityNotFoundException e) {
+                    //replace &quot;Unified+Apps&quot; with your developer name
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/search?q=pub:Hence Simplified")));
+                }
+                return true;
+
+            case R.id.menu_remove_Ads:
+                AlertDialog alert_dia1=new AlertDialog.Builder(MainActivity.this).create();
+                alert_dia1.setTitle("Remove Ads!");
+                alert_dia1.setMessage("Download the Jotter Lite Pro to enjoy Ad-free service!! Download Now?");
+
+                alert_dia1.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.jotterpro.notes&hl=en_IN")));
+                    }
+                });
+                alert_dia1.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                alert_dia1.show();
+                return true;
+
             case R.id.opt_about:
+                if(UnityAds.isReady("video"))
+                {
+                    UnityAds.show(MainActivity.this,"video");
+                }
+
+                else
+                {
+                    UnityAds.initialize(MainActivity.this,"3283238",unityAdsListener);
+                }
+
                 if(nit==1)
                 {
                     Intent AboutIntent=new Intent(this,newabout.class);
@@ -277,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.opt_privacy:
-                Intent privacyPolicy = new Intent(Intent.ACTION_VIEW, Uri.parse("https://praveen051997.wixsite.com/website/privacy-policy"));
+                Intent privacyPolicy = new Intent(Intent.ACTION_VIEW, Uri.parse("https://hencesimplified.wixsite.com/website/privacy-policy"));
                 startActivity(privacyPolicy);
                 return true;
 
@@ -298,6 +337,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 ExitActivity(null);
+
 
             }
         });
@@ -322,6 +362,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void HomeActivity(View view) {
 
+        if(UnityAds.isReady("video"))
+        {
+            UnityAds.show(MainActivity.this,"video");
+        }
+
+        else
+        {
+            UnityAds.initialize(MainActivity.this,"3283238",unityAdsListener);
+        }
+
         if(nit==1)
         {
             Intent HomeIntent=new Intent(this,HomeScreen.class);
@@ -345,12 +395,49 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+        checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+    }
+
     public void ExitActivity(View view)
     {
-        Intent ExitIntent=new Intent(Intent.ACTION_MAIN);
-        ExitIntent.addCategory(Intent.CATEGORY_HOME);
-        ExitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(ExitIntent);
+                Intent ExitIntent=new Intent(Intent.ACTION_MAIN);
+                ExitIntent.addCategory(Intent.CATEGORY_HOME);
+                ExitIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(ExitIntent);
+
     }
+
+
+
+private class UnityAdsListener implements IUnityAdsListener
+{
+
+    @Override
+    public void onUnityAdsReady(String s) {
+
+    }
+
+    @Override
+    public void onUnityAdsStart(String s) {
+
+    }
+
+    @Override
+    public void onUnityAdsFinish(String s, UnityAds.FinishState finishState) {
+
+       // HomeActivity(null);
+    }
+
+    @Override
+    public void onUnityAdsError(UnityAds.UnityAdsError unityAdsError, String s) {
+
+    }
+}
+
 
 }

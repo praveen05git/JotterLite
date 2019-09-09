@@ -1,12 +1,13 @@
 package com.example.jotter;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 import android.view.View;
 
 public class newabout extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,16 @@ public class newabout extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_newabout);
+
     }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+
+    }
+
 
     @Override
     public void onBackPressed() {
