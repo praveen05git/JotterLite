@@ -24,7 +24,7 @@
         android:layout_marginStart="136dp"
         android:layout_marginLeft="136dp"
         android:layout_marginTop="128dp"
-        android:text="Version 7.8.8"
+        android:text="Version 7.9.0"
         android:textColor="@color/bgDark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
