@@ -20,7 +20,7 @@ import com.unity3d.ads.UnityAds;
 import java.io.File;
 import java.util.ArrayList;
 
-public class HomeScreen extends AppCompatActivity implements IUnityAdsListener {
+public class    HomeScreen extends AppCompatActivity implements IUnityAdsListener {
 
     ListView lView;
     ArrayList<String> ar = new ArrayList<>();

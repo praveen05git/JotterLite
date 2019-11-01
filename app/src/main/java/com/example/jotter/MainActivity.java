@@ -261,7 +261,9 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.more_apps_opt:
                 try {
                     //replace &quot;Unified+Apps&quot; with your developer name https://play.google.com/store/apps/developer?id=Hence+Simplified&hl=en
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pub:Hence Simplified")));
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/dev?id=7031227816779180923")));
+
+                    //market://search?q=pub:Hence Simplified
                 }
                 catch (android.content.ActivityNotFoundException e) {
                     //replace &quot;Unified+Apps&quot; with your developer name
@@ -348,6 +350,7 @@ public class MainActivity extends AppCompatActivity  {
                 dialog.cancel();
             }
         });
+
         alt_dia.show();
 
 
