@@ -1,5 +1,6 @@
 package com.example.jotter;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.unity3d.ads.IUnityAdsListener;
 import com.unity3d.ads.UnityAds;
 
@@ -76,14 +77,16 @@ public class MainActivity extends AppCompatActivity  {
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(final View v) {
                 if(name.getText().toString().equals(""))
                 {
-                    Toast.makeText(getApplicationContext(),"Enter file name",Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v,"Enter file name", Snackbar.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Enter file name",Toast.LENGTH_SHORT).show();
                 }
                 else if(cont.getText().toString().equals(""))
                 {
-                    Toast.makeText(getApplicationContext(),"Enter content",Toast.LENGTH_SHORT).show();
+                    Snackbar.make(v,"Enter content", Snackbar.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(),"Enter content",Toast.LENGTH_SHORT).show();
                 }
 
                 else
@@ -118,7 +121,14 @@ public class MainActivity extends AppCompatActivity  {
                                 FileWriter fw=new FileWriter(nFile);
                                 fw.write(content);
                                 fw.close();
-                                Toast.makeText(getApplicationContext(),"File saved to "+f,Toast.LENGTH_SHORT).show();
+                                Snackbar.make(v,"Choose an image", Snackbar.LENGTH_SHORT)
+                                                .setAction("View File", new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        HomeActivity(null);
+                                                    }
+                                                }).show();
+                                //Toast.makeText(getApplicationContext(),"File saved to "+f,Toast.LENGTH_SHORT).show();
                             }catch(Exception e){Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();}
                         }
                         else
@@ -139,12 +149,20 @@ public class MainActivity extends AppCompatActivity  {
                                         FileWriter fw=new FileWriter(nFile);
                                         fw.write(content);
                                         fw.close();
-                                        Toast.makeText(getApplicationContext(),"File saved to "+f,Toast.LENGTH_SHORT).show();
+
+                                        Snackbar.make(v,"Choose an image", Snackbar.LENGTH_LONG)
+                                                .setAction("View File", new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        HomeActivity(null);
+                                                    }
+                                                }).show();
+                                        //Toast.makeText(getApplicationContext(),"File saved to "+f,Toast.LENGTH_SHORT).show();
                                     }catch(Exception e){Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();}
                                 }
                             });
 
-                            altr_dia.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                          altr_dia.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.cancel();
@@ -155,7 +173,10 @@ public class MainActivity extends AppCompatActivity  {
                     }
 
                     else
-                        Toast.makeText(getApplicationContext(),"No permission has been granted",Toast.LENGTH_SHORT).show();
+                    {
+                        Snackbar.make(v,"Choose an image", Snackbar.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"No permission has been granted",Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
