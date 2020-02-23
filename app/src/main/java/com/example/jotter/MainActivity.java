@@ -400,13 +400,13 @@ public class MainActivity extends AppCompatActivity  {
             Intent HomeIntent=new Intent(this,HomeScreen.class);
             HomeIntent.putExtra("nitVal","One");
             startActivity(HomeIntent);
-            //overridePendingTransition(R.anim.right_enter,R.anim.left_out);
+            overridePendingTransition(R.anim.right_enter,R.anim.left_out);
         }
         else {
             Intent HomeIntent = new Intent(this, HomeScreen.class);
             HomeIntent.putExtra("nitVal","Zero");
             startActivity(HomeIntent);
-            //overridePendingTransition(R.anim.right_enter, R.anim.left_out);
+            overridePendingTransition(R.anim.right_enter, R.anim.left_out);
         }
     }
 

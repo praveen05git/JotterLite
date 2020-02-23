@@ -121,7 +121,7 @@ public class    HomeScreen extends AppCompatActivity implements IUnityAdsListene
         Intent FilesIntent = new Intent(this, fileView.class);
         FilesIntent.putExtra("message", fileName);
         startActivity(FilesIntent);
-        overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
+        overridePendingTransition(R.anim.right_enter, R.anim.left_out);
     }
 
     @Override
@@ -152,7 +152,8 @@ public class    HomeScreen extends AppCompatActivity implements IUnityAdsListene
 
         Intent MainIntent=new Intent(this,MainActivity.class);
         startActivity(MainIntent);
-        overridePendingTransition(android.R.anim.slide_in_left,0);
+        //overridePendingTransition(android.R.anim.slide_in_left,0);
+        overridePendingTransition(R.anim.left_enter,R.anim.right_out);
     }
 
     @Override

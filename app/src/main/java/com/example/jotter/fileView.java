@@ -201,6 +201,6 @@ public class fileView extends AppCompatActivity {
         else
             HomeIntent.putExtra("nitVal","Zero");
         startActivity(HomeIntent);
-        overridePendingTransition(android.R.anim.slide_in_left,0);
+        overridePendingTransition(R.anim.left_enter,R.anim.right_out);
     }
 }
