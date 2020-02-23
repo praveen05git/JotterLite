@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity  {
                                 FileWriter fw=new FileWriter(nFile);
                                 fw.write(content);
                                 fw.close();
-                                Snackbar.make(v,"Choose an image", Snackbar.LENGTH_SHORT)
+                                Snackbar.make(v,"File saved to "+f, Snackbar.LENGTH_LONG)
                                                 .setAction("View File", new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
@@ -150,7 +150,7 @@ public class MainActivity extends AppCompatActivity  {
                                         fw.write(content);
                                         fw.close();
 
-                                        Snackbar.make(v,"Choose an image", Snackbar.LENGTH_LONG)
+                                        Snackbar.make(v,"File saved to"+f, Snackbar.LENGTH_LONG)
                                                 .setAction("View File", new View.OnClickListener() {
                                                     @Override
                                                     public void onClick(View v) {
@@ -174,8 +174,7 @@ public class MainActivity extends AppCompatActivity  {
 
                     else
                     {
-                        Snackbar.make(v,"Choose an image", Snackbar.LENGTH_LONG).show();
-                        //Toast.makeText(getApplicationContext(),"No permission has been granted",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"No permission has been granted",Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -401,13 +400,13 @@ public class MainActivity extends AppCompatActivity  {
             Intent HomeIntent=new Intent(this,HomeScreen.class);
             HomeIntent.putExtra("nitVal","One");
             startActivity(HomeIntent);
-            overridePendingTransition(R.anim.enter_anim,R.anim.exit_anim);
+            //overridePendingTransition(R.anim.right_enter,R.anim.left_out);
         }
         else {
             Intent HomeIntent = new Intent(this, HomeScreen.class);
             HomeIntent.putExtra("nitVal","Zero");
             startActivity(HomeIntent);
-            overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
+            //overridePendingTransition(R.anim.right_enter, R.anim.left_out);
         }
     }
 
