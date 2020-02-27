@@ -1,0 +1,65 @@
+{
+  "project_info": {
+    "project_number": "768626036335",
+    "firebase_url": "https://jotter-f6b0c.firebaseio.com",
+    "project_id": "jotter-f6b0c",
+    "storage_bucket": "jotter-f6b0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768626036335:android:42eae21c42e73b5b",
+        "android_client_info": {
+          "package_name": "com.jotter.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "768626036335-tq0jhtu4ins0vhrlfrt7utd036046etv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jotter.notes",
+            "certificate_hash": "02ac394146d526698a0f6817ce6ca86edd9a3f6d"
+          }
+        },
+        {
+          "client_id": "768626036335-p907osvfr55iu5agptraatef11nmip3d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jotter.notes",
+            "certificate_hash": "cb4464f9e51259bbd9ab771cca2ff625a2703af2"
+          }
+        },
+        {
+          "client_id": "768626036335-b7sk1nj9ero0vak5kk7h9rra9lngpjgh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jotter.notes",
+            "certificate_hash": "5a855b96ceacab9d328c554370f1cc61911ba888"
+          }
+        },
+        {
+          "client_id": "768626036335-fak7g5fpehuhfl4otnesjn6vst75ifdm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9dtRuwgkKXOLexWsC1-U3GaVEkgQn4yc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "768626036335-fak7g5fpehuhfl4otnesjn6vst75ifdm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-9792214164784075~3988105146"
+    }
+  ],
+  "configuration_version": "1"
+}
