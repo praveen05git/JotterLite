@@ -1,9 +1,13 @@
 package com.example.jotter;
 
 import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatDelegate;
+
 import android.view.View;
 
 public class newabout extends AppCompatActivity {
@@ -14,15 +18,13 @@ public class newabout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTitle("About");
 
-        Intent intent=getIntent();
-        String pass=intent.getStringExtra("nitVal");
+        Intent intent = getIntent();
+        String pass = intent.getStringExtra("nitVal");
 
-        if(pass.equals("One"))
-        {
+        if (pass.equals("One")) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
             setTheme(R.style.DarkTheme);
-        }
-        else {
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             setTheme(R.style.AppTheme);
         }
@@ -32,8 +34,7 @@ public class newabout extends AppCompatActivity {
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
 
     }
@@ -48,9 +49,9 @@ public class newabout extends AppCompatActivity {
 
     public void MainScreen(View view) {
 
-        Intent MainIntent=new Intent(this,MainActivity.class);
+        Intent MainIntent = new Intent(this, MainActivity.class);
         startActivity(MainIntent);
-        overridePendingTransition(android.R.anim.slide_in_left,0);
+        overridePendingTransition(android.R.anim.slide_in_left, 0);
     }
 
 }

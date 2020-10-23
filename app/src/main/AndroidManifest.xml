@@ -11,10 +11,11 @@
         android:configChanges="orientation|screenSize|keyboardHidden"
         android:icon="@mipmap/ic_icon_circle"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_icon_circle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".newabout"></activity>
+        <activity android:name=".newabout" />
         <activity android:name=".fileView" />
         <activity android:name=".SplashScreen">
             <intent-filter>

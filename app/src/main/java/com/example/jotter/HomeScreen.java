@@ -3,9 +3,12 @@ package com.example.jotter;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Environment;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.view.View;
@@ -20,7 +23,7 @@ import com.unity3d.ads.UnityAds;
 import java.io.File;
 import java.util.ArrayList;
 
-public class    HomeScreen extends AppCompatActivity implements IUnityAdsListener {
+public class HomeScreen extends AppCompatActivity implements IUnityAdsListener {
 
     ListView lView;
     ArrayList<String> ar = new ArrayList<>();
@@ -38,22 +41,20 @@ public class    HomeScreen extends AppCompatActivity implements IUnityAdsListene
         setTitle("My Jots");
 
 
-        Intent intent=getIntent();
-        String pass=intent.getStringExtra("nitVal");
+        Intent intent = getIntent();
+        String pass = intent.getStringExtra("nitVal");
 
-        if(pass.equals("One"))
-            {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                setTheme(R.style.DarkTheme);
-            }
-        else {
+        if (pass.equals("One")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            setTheme(R.style.DarkTheme);
+        } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
             setTheme(R.style.AppTheme);
         }
 
         setContentView(R.layout.activity_home_screen);
 
-        UnityAds.initialize(HomeScreen.this,"3283238",new_listener);
+        UnityAds.initialize(HomeScreen.this, "3283238", new_listener);
 
 
         lView = findViewById(R.id.File_list);
@@ -82,19 +83,19 @@ public class    HomeScreen extends AppCompatActivity implements IUnityAdsListene
             lView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                    AlertDialog alt=new AlertDialog.Builder(HomeScreen.this).create();
+                    AlertDialog alt = new AlertDialog.Builder(HomeScreen.this).create();
                     alt.setTitle("Warning!");
-                    fileName=ar.get(position);
-                    alt.setMessage("Do you want to delete, "+fileName+"?");
+                    fileName = ar.get(position);
+                    alt.setMessage("Do you want to delete, " + fileName + "?");
 
                     alt.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            File f=new File(Environment.getExternalStorageDirectory()+"/MyJots"+"/"+fileName);
+                            File f = new File(Environment.getExternalStorageDirectory() + "/MyJots" + "/" + fileName);
                             f.delete();
                             finish();
                             startActivity(getIntent());
-                            Toast.makeText(getApplicationContext(),"File Deleted",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "File Deleted", Toast.LENGTH_SHORT).show();
 
                         }
                     });
@@ -125,8 +126,7 @@ public class    HomeScreen extends AppCompatActivity implements IUnityAdsListene
     }
 
     @Override
-    public void onStart()
-    {
+    public void onStart() {
         super.onStart();
 
     }
@@ -134,26 +134,23 @@ public class    HomeScreen extends AppCompatActivity implements IUnityAdsListene
     @Override
     public void onBackPressed() {
 
-               MainScreen(null);
+        MainScreen(null);
 
 
     }
 
     public void MainScreen(View view) {
 
-        if(UnityAds.isReady("video"))
-        {
-            UnityAds.show(HomeScreen.this,"video");
-        }
-        else
-        {
-            UnityAds.initialize(HomeScreen.this,"3283238",new_listener);
+        if (UnityAds.isReady("video")) {
+            UnityAds.show(HomeScreen.this, "video");
+        } else {
+            UnityAds.initialize(HomeScreen.this, "3283238", new_listener);
         }
 
-        Intent MainIntent=new Intent(this,MainActivity.class);
+        Intent MainIntent = new Intent(this, MainActivity.class);
         startActivity(MainIntent);
         //overridePendingTransition(android.R.anim.slide_in_left,0);
-        overridePendingTransition(R.anim.left_enter,R.anim.right_out);
+        overridePendingTransition(R.anim.left_enter, R.anim.right_out);
     }
 
     @Override
