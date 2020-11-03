@@ -5,7 +5,7 @@
     android:id="@+id/file_View_constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fileView">
+    tools:context=".FileViewActivity">
 
     <EditText
         android:id="@+id/edit_head"

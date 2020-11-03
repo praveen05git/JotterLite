@@ -28,7 +28,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-        UnityAds.initialize(MainActivity.this, "3283238", unityAdsListener);
+        UnityAds.initialize(MainActivity.this, "YOUR_UNITY_GAME_ID", unityAdsListener);
 
 //        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES)
         if (nitSettings.loadNitState() == true) {
@@ -300,16 +299,16 @@ public class MainActivity extends AppCompatActivity {
                 if (UnityAds.isReady("video")) {
                     UnityAds.show(MainActivity.this, "video");
                 } else {
-                    UnityAds.initialize(MainActivity.this, "3283238", unityAdsListener);
+                    UnityAds.initialize(MainActivity.this, "YOUR_UNITY_GAME_ID", unityAdsListener);
                 }
 
                 if (nit == 1) {
-                    Intent AboutIntent = new Intent(this, newabout.class);
+                    Intent AboutIntent = new Intent(this, AboutActivity.class);
                     AboutIntent.putExtra("nitVal", "One");
                     startActivity(AboutIntent);
                     overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
                 } else {
-                    Intent HomeIntent = new Intent(this, newabout.class);
+                    Intent HomeIntent = new Intent(this, AboutActivity.class);
                     HomeIntent.putExtra("nitVal", "Zero");
                     startActivity(HomeIntent);
                     overridePendingTransition(R.anim.enter_anim, R.anim.exit_anim);
@@ -366,7 +365,7 @@ public class MainActivity extends AppCompatActivity {
         if (UnityAds.isReady("video")) {
             UnityAds.show(MainActivity.this, "video");
         } else {
-            UnityAds.initialize(MainActivity.this, "3283238", unityAdsListener);
+            UnityAds.initialize(MainActivity.this, "YOUR_UNITY_GAME_ID", unityAdsListener);
         }
 
         if (nit == 1) {

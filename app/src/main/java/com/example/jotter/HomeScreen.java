@@ -54,7 +54,7 @@ public class HomeScreen extends AppCompatActivity implements IUnityAdsListener {
 
         setContentView(R.layout.activity_home_screen);
 
-        UnityAds.initialize(HomeScreen.this, "3283238", new_listener);
+        UnityAds.initialize(HomeScreen.this, "YOUR_UNITY_GAME_ID", new_listener);
 
 
         lView = findViewById(R.id.File_list);
@@ -119,7 +119,7 @@ public class HomeScreen extends AppCompatActivity implements IUnityAdsListener {
 
 
     public void viewFiles(View view) {
-        Intent FilesIntent = new Intent(this, fileView.class);
+        Intent FilesIntent = new Intent(this, FileViewActivity.class);
         FilesIntent.putExtra("message", fileName);
         startActivity(FilesIntent);
         overridePendingTransition(R.anim.right_enter, R.anim.left_out);
@@ -144,7 +144,7 @@ public class HomeScreen extends AppCompatActivity implements IUnityAdsListener {
         if (UnityAds.isReady("video")) {
             UnityAds.show(HomeScreen.this, "video");
         } else {
-            UnityAds.initialize(HomeScreen.this, "3283238", new_listener);
+            UnityAds.initialize(HomeScreen.this, "YOUR_UNITY_GAME_ID", new_listener);
         }
 
         Intent MainIntent = new Intent(this, MainActivity.class);
