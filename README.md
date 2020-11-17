@@ -43,7 +43,7 @@ Watch App trailer on Youtube: https://youtu.be/UjSg_TZewjE
 </br>
 
 ## Download
-Available on Play Store: https://play.google.com/store/apps/details?id=com.jotterpro.notes
+Available on Play Store: https://play.google.com/store/apps/details?id=com.jotter.notes
 </br>
 
 For Ad-Free Version Download Jotter Lite Pro:
