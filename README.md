@@ -1,10 +1,10 @@
 <h1 align="center">Jotter Lite</h1>
 
 <p align="center">  
-Freemium version of <a href="https://github.com/praveen05git/JotterLitePro">Jotter Lite Pro!</a></br>
 You can take notes in Jotter and share your notes as a text file to anyone</br>
 Browse through your jots, Read them and also you can Edit them</br>
 Wanna note down something at night? Use the Night mode!</br>
+Freemium version of <a href="https://github.com/praveen05git/JotterLitePro">Jotter Lite Pro!</a></br>
 </p>
 </br>
 
@@ -30,7 +30,7 @@ Wanna note down something at night? Use the Night mode!</br>
 - Implemented Bundles to save the Data in an activity during Configuration changes
 - Custom Style for Night Mode
 - Custom Transition animations between activities
-- Implemented Ads using Unity Ads 
+- Implemented Video Ads using Unity Ads 
 </br>
 
 <p align="center">
