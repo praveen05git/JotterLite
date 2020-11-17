@@ -1,7 +1,7 @@
 <h1 align="center">Jotter Lite</h1>
 
 <p align="center">  
-Freemium version of Jotter Lite!</br>
+Freemium version of <a href="https://github.com/praveen05git/JotterLitePro">Jotter Lite Pro!</a></br>
 You can take notes in Jotter and share your notes as a text file to anyone</br>
 Browse through your jots, Read them and also you can Edit them</br>
 Wanna note down something at night? Use the Night mode!</br>
