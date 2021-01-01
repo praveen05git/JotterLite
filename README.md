@@ -9,8 +9,8 @@ Freemium version of <a href="https://github.com/praveen05git/JotterLitePro">Jott
 </br>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter1.png"/>
-  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter2.png"/>
+  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter1.png" width="30%" />
+  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter2.png" width="30%" />
 </p>
 
 ## Features
@@ -34,8 +34,8 @@ Freemium version of <a href="https://github.com/praveen05git/JotterLitePro">Jott
 </br>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter3.png"/>
-  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter4.png"/>
+  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter3.png" width="30%" />
+  <img src="https://raw.githubusercontent.com/praveen05git/JotterLitePro/master/screenshots/jotter4.png" width="30%" />
 </p>
 
 ## App Trailer
